@@ -2,6 +2,7 @@
   "dependencies": {
     "com.unity.inputsystem": "1.7.0",
     "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.ugui": "1.0.0",
     "com.youngwoocho02.unity-cli-connector": "file:com.youngwoocho02.unity-cli-connector",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
