@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 0f;
     private int count;
     public Text countText;
+    public GameObject winTextObject;
+    public string gameOverText = "You Lose!";
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
+        winTextObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +36,13 @@ public class PlayerController : MonoBehaviour
             count++;
             other.gameObject.SetActive(false);
             SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            winTextObject.GetComponent<Text>().text = gameOverText;
+            winTextObject.SetActive(true);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -51,6 +61,12 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count;
+        if (count >= 12)
+        {
+            winTextObject.GetComponent<Text>().text = "You Win!";
+            winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+        }
     }
 
 }
